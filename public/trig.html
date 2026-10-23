@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>پاسخ‌نامه تشریحی و مفهومی تست‌های مثلثات دهم</title>
+  
+  <!-- MathJax Configuration with TeX, SVG and local fallbacks -->
+  <script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']],
+      processEscapes: true
+    },
+    svg: {
+      fontCache: 'global'
+    }
+  };
+  </script>
+  <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card-bg: #111827;
+      --card-border: #1f2937;
+      --text: #f3f4f6;
+      --text-muted: #9ca3af;
+      --accent: #38bdf8;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --success: #34d399;
+      --success-bg: rgba(52, 211, 153, 0.1);
+      --success-border: rgba(52, 211, 153, 0.3);
+      --warning: #fbbf24;
+      --warning-bg: rgba(251, 191, 36, 0.1);
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --card-border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --accent: #0284c7;
+      --accent-glow: rgba(2, 132, 199, 0.1);
+      --success: #059669;
+      --success-bg: #ecfdf5;
+      --success-border: #a7f3d0;
+      --warning: #d97706;
+      --warning-bg: #fffbeb;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      transition: background-color 0.2s, border-color 0.2s;
+    }
+
+    body {
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      direction: rtl;
+      padding: 24px 16px 80px 16px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-titles h1 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .header-titles p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .theme-toggle {
+      background: var(--accent-glow);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 8px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .nav-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-btn:hover, .nav-btn.active {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: var(--accent-glow);
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed var(--card-border);
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .ans-tag {
+      background: var(--success-bg);
+      color: var(--success);
+      border: 1px solid var(--success-border);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    .stem {
+      background: rgba(125, 125, 125, 0.05);
+      border-right: 4px solid var(--accent);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 1.02rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      line-height: 1.9;
+    }
+
+    .options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .option {
+      background: rgba(125, 125, 125, 0.03);
+      border: 1px solid var(--card-border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      direction: ltr;
+    }
+
+    .option.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      font-weight: 700;
+    }
+
+    .solution-box {
+      background: rgba(125, 125, 125, 0.02);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+    }
+
+    .sol-header {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .step {
+      margin-bottom: 12px;
+      padding-right: 4px;
+    }
+
+    .step-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .math-eq {
+      direction: ltr;
+      display: block;
+      margin: 8px 0;
+      text-align: center;
+      font-size: 1.05rem;
+      overflow-x: auto;
+      padding: 4px 0;
+    }
+
+    .trap-box {
+      background: var(--warning-bg);
+      border-right: 4px solid var(--warning);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text);
+      margin-top: 14px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .trap-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    mjx-container {
+      margin: 2px 0 !important;
+      font-size: 105% !important;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <div class="header-titles">
+      <h1>پاسخ‌نامه تشریحی و مفهومی ۱۲ تست مثلثات</h1>
+      <p>ریاضی دهم (درس دوم: مثلثات و اتحادهای دایره مثلثاتی)</p>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span id="theme-icon">☀️</span> <span id="theme-text">حالت روشن</span>
+    </button>
+  </header>
+
+  <div class="quick-nav">
+    <a href="#q1" class="nav-btn">سوال ۱</a>
+    <a href="#q2" class="nav-btn">سوال ۲</a>
+    <a href="#q3" class="nav-btn">سوال ۳</a>
+    <a href="#q4" class="nav-btn">سوال ۴</a>
+    <a href="#q5" class="nav-btn">سوال ۵</a>
+    <a href="#q6" class="nav-btn">سوال ۶</a>
+    <a href="#q7" class="nav-btn">سوال ۷</a>
+    <a href="#q8" class="nav-btn">سوال ۸</a>
+    <a href="#q9" class="nav-btn">سوال ۹</a>
+    <a href="#q10" class="nav-btn">سوال ۱۰</a>
+    <a href="#q11" class="nav-btn">سوال ۱۱</a>
+    <a href="#q12" class="nav-btn">سوال ۱۲</a>
+  </div>
+
+  <!-- Q1 -->
+  <div class="card" id="q1">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۱</div>
+      <div class="ans-tag">✓ گزینه ۱ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $a \in \mathbb{R}$ و $a 
+eq 0$ و داشته باشیم $a \cos x = 1 + \sin x$، آنگاه حاصل $rac{1}{\cos x}$ کدام است؟
+    </div>
+    <div class="options">
+      <div class="option correct"><span>1)</span> <span>$\frac{1+a^2}{2a}$</span></div>
+      <div class="option"><span>2)</span> <span>$\frac{1+a^2}{2}$</span></div>
+      <div class="option"><span>3)</span> <span>$\frac{1+a^2}{a}$</span></div>
+      <div class="option"><span>4)</span> <span>$\frac{1+a}{2a}$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: تقسیم طرفین بر $\cos x$</span>
+        معادله داده‌شده رو به کسینوس تقسیم می‌کنیم تا پای تانژانت به معادله باز بشه:
+        <div class="math-eq">$$a = \frac{1 + \sin x}{\cos x} = \frac{1}{\cos x} + \tan x \quad (1)$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: استفاده از اتحاد مزدوج طلایی</span>
+        از کتاب ریاضی دهم می‌دونیم $1 + \tan^2 x = \frac{1}{\cos^2 x}$، پس تفاضلشون یک میشه:
+        <div class="math-eq">$$\frac{1}{\cos^2 x} - \tan^2 x = 1$$</div>
+        حالا اتحاد مزدوج رو باز می‌کنیم:
+        <div class="math-eq">$$\left(\frac{1}{\cos x} + \tan x\right)\left(\frac{1}{\cos x} - \tan x\right) = 1$$</div>
+        پرانتز اول دقیقاً همون $a$ است! پس:
+        <div class="math-eq">$$a \cdot \left(\frac{1}{\cos x} - \tan x\right) = 1 \implies \frac{1}{\cos x} - \tan x = \frac{1}{a} \quad (2)$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: جمع دو رابطه و حذف $\tan x$</span>
+        کافیه معادله (۱) و (۲) رو با هم جمع بزنیم:
+        <div class="math-eq">$$2 \left(\frac{1}{\cos x}\right) = a + \frac{1}{a} = \frac{a^2 + 1}{a} \implies \frac{1}{\cos x} = \frac{1 + a^2}{2a}$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card" id="q2">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۲</div>
+      <div class="ans-tag">✓ گزینه ۱ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $3 \sin \alpha + 2 \cos \alpha = 1$ باشد، حاصل $8 \tan \alpha + 3 \cot \alpha$ کدام است؟
+    </div>
+    <div class="options">
+      <div class="option correct"><span>1)</span> <span>$-12$</span></div>
+      <div class="option"><span>2)</span> <span>$-6$</span></div>
+      <div class="option"><span>3)</span> <span>$-8$</span></div>
+      <div class="option"><span>4)</span> <span>$-16$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: تبدیل عبارت خواسته به تانژانت</span>
+        چون $\cot \alpha = \frac{1}{\tan \alpha}$ است:
+        <div class="math-eq">$$8 \tan \alpha + 3 \cot \alpha = 8 \tan \alpha + \frac{3}{\tan \alpha} = \frac{8 \tan^2 \alpha + 3}{\tan \alpha}$$</div>
+        پس فقط کافیه مقدار صورت یعنی $8 \tan^2 \alpha + 3$ رو پیدا کنیم!
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: تقسیم بر $\cos \alpha$ و به توان دو رساندن</span>
+        معادله فرض رو به $\cos \alpha$ تقسیم می‌کنیم:
+        <div class="math-eq">$$3 \tan \alpha + 2 = \frac{1}{\cos \alpha}$$</div>
+        حالا هر دو طرف رو به توان ۲ می‌رسونیم:
+        <div class="math-eq">$$(3 \tan \alpha + 2)^2 = \frac{1}{\cos^2 \alpha}$$</div>
+        چون $\frac{1}{\cos^2 \alpha} = 1 + \tan^2 \alpha$ است، بسط مربع دوجمله‌ای رو می‌نویسیم:
+        <div class="math-eq">$$9 \tan^2 \alpha + 12 \tan \alpha + 4 = 1 + \tan^2 \alpha$$</div>
+        مرتب می‌کنیم:
+        <div class="math-eq">$$8 \tan^2 \alpha + 12 \tan \alpha + 3 = 0 \implies 8 \tan^2 \alpha + 3 = -12 \tan \alpha$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: جایگذاری نهایی</span>
+        مقدار به دست اومده رو می‌ذاریم توی کسر خواستهٔ سوال:
+        <div class="math-eq">$$\frac{8 \tan^2 \alpha + 3}{\tan \alpha} = \frac{-12 \tan \alpha}{\tan \alpha} = -12$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card" id="q3">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۳</div>
+      <div class="ans-tag">✓ گزینه ۴ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\tan \alpha + \cot \alpha = \frac{8}{5}$ و $0^\circ < \alpha < 90^\circ$ باشد، حاصل $\sin^3 \alpha + \cos^3 \alpha$ چقدر است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$\frac{3}{4}$</span></div>
+      <div class="option"><span>2)</span> <span>$\frac{3}{8}$</span></div>
+      <div class="option"><span>3)</span> <span>$\frac{9}{8}$</span></div>
+      <div class="option correct"><span>4)</span> <span>$\frac{9}{16}$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: پیدا کردن ضرب سینوس در کسینوس</span>
+        <div class="math-eq">$$\tan \alpha + \cot \alpha = \frac{\sin \alpha}{\cos \alpha} + \frac{\cos \alpha}{\sin \alpha} = \frac{\sin^2 \alpha + \cos^2 \alpha}{\sin \alpha \cos \alpha} = \frac{1}{\sin \alpha \cos \alpha} = \frac{8}{5} \implies \sin \alpha \cos \alpha = \frac{5}{8}$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: پیدا کردن مجموع $(\sin \alpha + \cos \alpha)$</span>
+        <div class="math-eq">$$(\sin \alpha + \cos \alpha)^2 = 1 + 2 \sin \alpha \cos \alpha = 1 + 2\left(\frac{5}{8}\right) = 1 + \frac{5}{4} = \frac{9}{4}$$</div>
+        چون در ربع اول هستیم و سینوس و کسینوس مثبتند:
+        <div class="math-eq">$$\sin \alpha + \cos \alpha = \sqrt{\frac{9}{4}} = \frac{3}{2}$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: اتحاد مجموع مکعبات (چاق و لاغر)</span>
+        <div class="math-eq">$$\sin^3 \alpha + \cos^3 \alpha = (\sin \alpha + \cos \alpha)(1 - \sin \alpha \cos \alpha)$$</div>
+        <div class="math-eq">$$= \frac{3}{2} \times \left(1 - \frac{5}{8}\right) = \frac{3}{2} \times \frac{3}{8} = \frac{9}{16}$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card" id="q4">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۴</div>
+      <div class="ans-tag">✓ گزینه ۴ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\sin x = \frac{a^4 + 1}{2a^2}$ باشد، آنگاه $\cos x$ برابر است با:
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$\frac{a^2+1}{2a^2}$</span></div>
+      <div class="option"><span>2)</span> <span>$\pm \frac{a^2+1}{2a^2}$</span></div>
+      <div class="option"><span>3)</span> <span>$1$</span></div>
+      <div class="option correct"><span>4)</span> <span>صفر</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: تحلیل دامنه عبارت سینوس</span>
+        کسر داده‌شده رو تفکیک می‌کنیم:
+        <div class="math-eq">$$\sin x = \frac{a^4}{2a^2} + \frac{1}{2a^2} = \frac{1}{2}\left(a^2 + \frac{1}{a^2}\right)$$</div>
+        می‌دانیم برای هر عدد حقیقی غیرصفر $a$:
+        <div class="math-eq">$$\left(a - \frac{1}{a}\right)^2 \ge 0 \implies a^2 + \frac{1}{a^2} \ge 2$$</div>
+        بنابراین همیشه داریم: $\sin x \ge \frac{1}{2}(2) = 1$.
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: تطابق با دایره مثلثاتی</span>
+        در دایره مثلثاتی سینوس زاویه نمی‌تونه بیشتر از ۱ بشه ($\sin x \le 1$). تنها حالتی که هر دو نامساوی برقرار باشن اینه که دقیقاً:
+        <div class="math-eq">$$\sin x = 1 \quad (\text{به ازای } a = \pm 1)$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: محاسبه کسینوس</span>
+        وقتی سینوس برابر ۱ است:
+        <div class="math-eq">$$\cos^2 x = 1 - \sin^2 x = 1 - 1 = 0 \implies \cos x = 0$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card" id="q5">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۵</div>
+      <div class="ans-tag">✓ گزینه ۱ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\sin x + \cos x = \frac{1}{2}$ باشد، حاصل $\sin^3 x + \cos^3 x$ کدام است؟
+    </div>
+    <div class="options">
+      <div class="option correct"><span>1)</span> <span>$\frac{11}{16}$</span></div>
+      <div class="option"><span>2)</span> <span>$-\frac{1}{8}$</span></div>
+      <div class="option"><span>3)</span> <span>$\frac{11}{8}$</span></div>
+      <div class="option"><span>4)</span> <span>$\frac{7}{8}$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: به توان ۲ رساندن برای یافتن ضرب</span>
+        <div class="math-eq">$$(\sin x + \cos x)^2 = \left(\frac{1}{2}\right)^2 = \frac{1}{4}$$</div>
+        <div class="math-eq">$$1 + 2 \sin x \cos x = \frac{1}{4} \implies 2 \sin x \cos x = -\frac{3}{4} \implies \sin x \cos x = -\frac{3}{8}$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: تجزیه اتحاد مکعبات</span>
+        <div class="math-eq">$$\sin^3 x + \cos^3 x = (\sin x + \cos x)(1 - \sin x \cos x)$$</div>
+        <div class="math-eq">$$= \frac{1}{2} \times \left[1 - \left(-\frac{3}{8}\right)\right] = \frac{1}{2} \times \frac{11}{8} = \frac{11}{16}$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card" id="q6">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۶</div>
+      <div class="ans-tag">✓ گزینه ۴ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\tan \alpha = \frac{12}{5}$ و $\alpha$ در ناحیه سوم باشد، حاصل $12 \cot \alpha + 13 \cos \alpha$ چقدر است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$1$</span></div>
+      <div class="option"><span>2)</span> <span>$-3$</span></div>
+      <div class="option"><span>3)</span> <span>$14$</span></div>
+      <div class="option correct"><span>4)</span> <span>صفر</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: محاسبه کتانژانت</span>
+        <div class="math-eq">$$\cot \alpha = \frac{1}{\tan \alpha} = \frac{5}{12} \implies 12 \cot \alpha = 12 \times \frac{5}{12} = 5$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: محاسبه کسینوس در ربع سوم</span>
+        <div class="math-eq">$$1 + \tan^2 \alpha = \frac{1}{\cos^2 \alpha} \implies 1 + \frac{144}{25} = \frac{169}{25} = \frac{1}{\cos^2 \alpha} \implies \cos^2 \alpha = \frac{25}{169}$$</div>
+      </div>
+      <div class="trap-box">
+        <span class="trap-icon">⚠️</span>
+        <div><strong>دام تستی:</strong> زاویه $\alpha$ در <strong>ناحیه سوم</strong> قرار دارد و در ربع سوم کسینوس منفی است:
+        $$\cos \alpha = -\sqrt{\frac{25}{169}} = -\frac{5}{13} \implies 13 \cos \alpha = -5$$
+        </div>
+      </div>
+      <div class="step" style="margin-top:12px;">
+        <span class="step-title">گام سوم: جمع دو بخش</span>
+        <div class="math-eq">$$12 \cot \alpha + 13 \cos \alpha = 5 + (-5) = 0$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card" id="q7">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۷</div>
+      <div class="ans-tag">✓ گزینه ۴ صحیح است</div>
+    </div>
+    <div class="stem">
+      ساده شدهٔ عبارت $(1 - \sin^2 \theta)\left(1 + \frac{1}{\cos^2 \theta}\right) - (1 - \cos \theta)^2$ کدام است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$\sin^2 \theta$</span></div>
+      <div class="option"><span>2)</span> <span>$\cos^2 \theta$</span></div>
+      <div class="option"><span>3)</span> <span>$-\cos^2 \theta$</span></div>
+      <div class="option correct"><span>4)</span> <span>$2 \cos \theta$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: ساده‌سازی بخش ضرب اول</span>
+        می‌دانیم $1 - \sin^2 \theta = \cos^2 \theta$، پس:
+        <div class="math-eq">$$\cos^2 \theta \left(1 + \frac{1}{\cos^2 \theta}\right) = \cos^2 \theta + \cos^2 \theta \cdot \frac{1}{\cos^2 \theta} = \cos^2 \theta + 1$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: باز کردن مربع دوجمله‌ای دوم</span>
+        <div class="math-eq">$$(1 - \cos \theta)^2 = 1 - 2 \cos \theta + \cos^2 \theta$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: تفریق دو عبارت</span>
+        <div class="math-eq">$$(\cos^2 \theta + 1) - (1 - 2 \cos \theta + \cos^2 \theta)$$</div>
+        <div class="math-eq">$$= \cos^2 \theta + 1 - 1 + 2 \cos \theta - \cos^2 \theta = 2 \cos \theta$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card" id="q8">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۸</div>
+      <div class="ans-tag">✓ گزینه ۳ صحیح است</div>
+    </div>
+    <div class="stem">
+      بیشترین مقدار $A = \sin^2 x + \sin x + 3$ چقدر از کمترین مقدارش بیشتر است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$5$</span></div>
+      <div class="option"><span>2)</span> <span>$\frac{11}{4}$</span></div>
+      <div class="option correct"><span>3)</span> <span>$\frac{9}{4}$</span></div>
+      <div class="option"><span>4)</span> <span>$\frac{3}{4}$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: تغییر متغیر و تشکیل تابع درجه ۲</span>
+        فرض می‌کنیم $t = \sin x$، با شرط $-1 \le t \le 1$:
+        <div class="math-eq">$$A(t) = t^2 + t + 3$$</div>
+        با روش مربع کامل کردن:
+        <div class="math-eq">$$A(t) = \left(t + \frac{1}{2}\right)^2 + 3 - \frac{1}{4} = \left(t + \frac{1}{2}\right)^2 + \frac{11}{4}$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: تعیین کمترین مقدار (مینیمم)</span>
+        چون ضریب $t^2$ مثبت است، رأس سهمی در $t = -\frac{1}{2}$ است که دقیقاً داخل بازه $[-1, 1]$ است:
+        <div class="math-eq">$$A_{\min} = \frac{11}{4}$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: تعیین بیشترین مقدار (ماکزیمم)</span>
+        ماکزیمم در دورترین نقطه مرزی نسبت به رأس رخ می‌دهد ($t = 1$):
+        <div class="math-eq">$$A_{\max} = A(1) = 1^2 + 1 + 3 = 5$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام چهارم: محاسبه اختلاف خواسته شده</span>
+        <div class="math-eq">$$A_{\max} - A_{\min} = 5 - \frac{11}{4} = \frac{20 - 11}{4} = \frac{9}{4}$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card" id="q9">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۹</div>
+      <div class="ans-tag">✓ گزینه ۴ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\sin \alpha + \cos \alpha = \frac{1}{4}$ باشد، حاصل $|\sin \alpha - \cos \alpha|$ چقدر است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$\frac{\sqrt{31}}{16}$</span></div>
+      <div class="option"><span>2)</span> <span>$\frac{\sqrt{33}}{4}$</span></div>
+      <div class="option"><span>3)</span> <span>$\frac{\sqrt{29}}{4}$</span></div>
+      <div class="option correct"><span>4)</span> <span>$\frac{\sqrt{31}}{4}$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: به توان ۲ رساندن تفاضل</span>
+        فرض می‌کنیم $D = |\sin \alpha - \cos \alpha|$:
+        <div class="math-eq">$$D^2 = (\sin \alpha - \cos \alpha)^2 = \sin^2 \alpha + \cos^2 \alpha - 2 \sin \alpha \cos \alpha = 1 - 2 \sin \alpha \cos \alpha$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: استخراج $2 \sin \alpha \cos \alpha$ از جمع</span>
+        <div class="math-eq">$$(\sin \alpha + \cos \alpha)^2 = \left(\frac{1}{4}\right)^2 = \frac{1}{16}$$</div>
+        <div class="math-eq">$$1 + 2 \sin \alpha \cos \alpha = \frac{1}{16} \implies 2 \sin \alpha \cos \alpha = \frac{1}{16} - 1 = -\frac{15}{16}$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: جایگذاری در $D^2$ و جذر گرفتن</span>
+        <div class="math-eq">$$D^2 = 1 - \left(-\frac{15}{16}\right) = 1 + \frac{15}{16} = \frac{31}{16} \implies D = \sqrt{\frac{31}{16}} = \frac{\sqrt{31}}{4}$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card" id="q10">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۱۰</div>
+      <div class="ans-tag">✓ گزینه ۲ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\frac{\sin^2 x - 2 \cos^2 x + 1}{\sin^2 x + 2 \cos^2 x - 1} = 3$ باشد، مقدار $\tan^2 x$ چقدر است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$1$</span></div>
+      <div class="option correct"><span>2)</span> <span>$2$</span></div>
+      <div class="option"><span>3)</span> <span>$3$</span></div>
+      <div class="option"><span>4)</span> <span>$4$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: جایگزینی عدد ۱ با $\sin^2 x + \cos^2 x$</span>
+        صورت کسر:
+        <div class="math-eq">$$\sin^2 x - 2 \cos^2 x + (\sin^2 x + \cos^2 x) = 2 \sin^2 x - \cos^2 x$$</div>
+        مخرج کسر:
+        <div class="math-eq">$$\sin^2 x + 2 \cos^2 x - (\sin^2 x + \cos^2 x) = \cos^2 x$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: تفکیک کسر به تانژانت</span>
+        <div class="math-eq">$$\frac{2 \sin^2 x - \cos^2 x}{\cos^2 x} = \frac{2 \sin^2 x}{\cos^2 x} - \frac{\cos^2 x}{\cos^2 x} = 2 \tan^2 x - 1$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: حل معادله ساده</span>
+        <div class="math-eq">$$2 \tan^2 x - 1 = 3 \implies 2 \tan^2 x = 4 \implies \tan^2 x = 2$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q11 -->
+  <div class="card" id="q11">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۱۱</div>
+      <div class="ans-tag">✓ گزینه ۲ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $\sin^6 \alpha + \sin^4 \alpha + \cos^6 \alpha + \cos^4 \alpha = A + B \sin^2 \alpha \cos^2 \alpha$ باشد، حاصل $A + B$ کدام است؟
+    </div>
+    <div class="options">
+      <div class="option"><span>1)</span> <span>$-7$</span></div>
+      <div class="option correct"><span>2)</span> <span>$-3$</span></div>
+      <div class="option"><span>3)</span> <span>$3$</span></div>
+      <div class="option"><span>4)</span> <span>$7$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: دسته‌بندی توان‌های ۴ و ۶</span>
+        <div class="math-eq">$$(\sin^4 \alpha + \cos^4 \alpha) + (\sin^6 \alpha + \cos^6 \alpha)$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: استفاده از اتحادهای کمکی فرعی دهم</span>
+        می‌دانیم:
+        <div class="math-eq">$$\sin^4 \alpha + \cos^4 \alpha = (\sin^2 \alpha + \cos^2 \alpha)^2 - 2 \sin^2 \alpha \cos^2 \alpha = 1 - 2 \sin^2 \alpha \cos^2 \alpha$$</div>
+        <div class="math-eq">$$\sin^6 \alpha + \cos^6 \alpha = (\sin^2 \alpha + \cos^2 \alpha)^3 - 3 \sin^2 \alpha \cos^2 \alpha (\sin^2 \alpha + \cos^2 \alpha) = 1 - 3 \sin^2 \alpha \cos^2 \alpha$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام سوم: جمع دو عبارت و تطبیق ضرایب</span>
+        <div class="math-eq">$$(1 - 2 \sin^2 \alpha \cos^2 \alpha) + (1 - 3 \sin^2 \alpha \cos^2 \alpha) = 2 - 5 \sin^2 \alpha \cos^2 \alpha$$</div>
+        مقایسه با $A + B \sin^2 \alpha \cos^2 \alpha$:
+        <div class="math-eq">$$A = 2 ,\quad B = -5 \implies A + B = 2 + (-5) = -3$$</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q12 -->
+  <div class="card" id="q12">
+    <div class="card-head">
+      <div class="card-title">📌 سوال شماره ۱۲</div>
+      <div class="ans-tag">✓ گزینه ۱ صحیح است</div>
+    </div>
+    <div class="stem">
+      اگر $x$ زاویه‌ای در ربع چهارم باشد، حاصل عبارت $(4 \sin^2 60^\circ - 3 \sin^2 x) \sqrt[4]{\tan^4 x + 2 \tan^2 x + 1}$ با کدام گزینه برابر است؟
+    </div>
+    <div class="options">
+      <div class="option correct"><span>1)</span> <span>$3 \cos x$</span></div>
+      <div class="option"><span>2)</span> <span>$-3 \cos x$</span></div>
+      <div class="option"><span>3)</span> <span>$3 \cot x \cos x$</span></div>
+      <div class="option"><span>4)</span> <span>$-3 \cot x \cos x$</span></div>
+    </div>
+    <div class="solution-box">
+      <div class="sol-header">💡 راه حل تشریحی و مفهومی:</div>
+      <div class="step">
+        <span class="step-title">گام اول: ساده‌سازی پرانتز اول</span>
+        می‌دانیم $\sin 60^\circ = \frac{\sqrt{3}}{2} \implies \sin^2 60^\circ = \frac{3}{4}$:
+        <div class="math-eq">$$4 \sin^2 60^\circ - 3 \sin^2 x = 4\left(\frac{3}{4}\right) - 3 \sin^2 x = 3 - 3 \sin^2 x = 3(1 - \sin^2 x) = 3 \cos^2 x$$</div>
+      </div>
+      <div class="step">
+        <span class="step-title">گام دوم: ساده‌سازی عبارت زیر رادیکال فرجه ۴</span>
+        زیر رادیکال اتحاد مربع کامل است:
+        <div class="math-eq">$$\tan^4 x + 2 \tan^2 x + 1 = (\tan^2 x + 1)^2 = \left(\frac{1}{\cos^2 x}\right)^2 = \frac{1}{\cos^4 x}$$</div>
+        ریشه چهارم می‌گیریم:
+        <div class="math-eq">$$\sqrt[4]{\frac{1}{\cos^4 x}} = \frac{1}{|\cos x|}$$</div>
+      </div>
+      <div class="trap-box">
+        <span class="trap-icon">⚠️</span>
+        <div><strong>دام تستی بسیار مهم:</strong> زاویه $x$ در <strong>ربع چهارم</strong> است. در ربع چهارم، محور کسینوس‌ها مثبت است ($\cos x > 0$)، بنابراین قدر مطلق بدون تغییر باز می‌شود:
+        <div class="math-eq">$$|\cos x| = \cos x \implies \frac{1}{|\cos x|} = \frac{1}{\cos x}$$</div>
+        </div>
+      </div>
+      <div class="step" style="margin-top:12px;">
+        <span class="step-title">گام سوم: ضرب دو عبارت</span>
+        <div class="math-eq">$$3 \cos^2 x \times \frac{1}{\cos x} = 3 \cos x$$</div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    پاسخ‌نامه تحلیلی ریاضی دهم &bull; فصل دوم: مثلثات
+  </footer>
+
+</div>
+
+<script>
+  function toggleTheme() {
+    const current = document.documentElement.getAttribute('data-theme');
+    const target = current === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', target);
+    document.getElementById('theme-icon').textContent = target === 'light' ? '🌙' : '☀️';
+    document.getElementById('theme-text').textContent = target === 'light' ? 'حالت تاریک' : 'حالت روشن';
+    localStorage.setItem('trig_theme', target);
+  }
+  const saved = localStorage.getItem('trig_theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('theme-icon').textContent = saved === 'light' ? '🌙' : '☀️';
+  document.getElementById('theme-text').textContent = saved === 'light' ? 'حالت تاریک' : 'حالت روشن';
+</script>
+
+</body>
+</html>
